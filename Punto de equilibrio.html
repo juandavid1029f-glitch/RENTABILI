@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Punto de equilibrio.css">
+    <title>Punto de equilibrio - RENTABILI</title>
+</head>
+<body>
+
+    <header>
+        <h1>RENTABILI</h1>
+
+        <nav>
+            <a href="index.html">Volver al inicio</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Calculadora de punto de equilibrio</h2>
+
+            <p>
+                Con esta calculadora puedes saber cuántas unidades
+                necesitas vender para cubrir los costos de tu negocio.
+            </p>
+        </section>
+
+        <section>
+            <h3>Ingresa los datos</h3>
+
+            <form>
+
+                <label for="costos">Costos fijos:</label>
+                <input type="number" id="costos" min="0" step="any" required>
+
+                <br><br>
+
+                <label for="precio">Precio de venta por unidad:</label>
+                <input type="number" id="precio" min="0" step="any" required>
+
+                <br><br>
+
+                <label for="variable">Costo variable por unidad:</label>
+                <input type="number" id="variable" min="0" step="any" required>
+
+                <br><br>
+
+                <button type="button" onclick="calcular()">
+                    Calcular punto de equilibrio
+                </button>
+
+            </form>
+        </section>
+
+        <section>
+            <h3>Resultados</h3>
+
+            <p id="unidades">Unidades que debes vender: </p>
+
+            <p id="ventas">Ventas necesarias: </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>RENTABILI © 2026</p>
+    </footer>
+
+    <script>
+
+        function calcular() {
+
+            let costos = parseFloat(document.getElementById("costos").value);
+            let precio = parseFloat(document.getElementById("precio").value);
+            let variable = parseFloat(document.getElementById("variable").value);
+
+            if (isNaN(costos) || isNaN(precio) || isNaN(variable)) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            if (costos < 0 || precio <= 0 || variable < 0) {
+                alert("Ingresa valores válidos.");
+                return;
+            }
+
+            if (precio <= variable) {
+                alert("El precio de venta debe ser mayor al costo variable.");
+                return;
+            }
+
+            let resultado = costos / (precio - variable);
+
+            let unidades = Math.ceil(resultado);
+
+            let ventas = unidades * precio;
+
+            document.getElementById("unidades").innerHTML =
+                "Unidades que debes vender: " + unidades;
+
+            document.getElementById("ventas").innerHTML =
+                "Ventas necesarias: $" + ventas.toFixed(2);
+
+        }
+
+    </script>
+
+</body>
+</html>
