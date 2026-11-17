@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precio de venta - RENTABILI</title>
+    <link rel="stylesheet" href="css/Precio de venta.css">
+</head>
+<body>
+
+    <header>
+        <h1>RENTABILI</h1>
+        <nav>
+            <a href="index.html">Volver al inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Calculadora de precio de venta</h2>
+            <p>
+                Determina cuánto debes cobrar por tus productos
+                para obtener la ganancia que deseas.
+            </p>
+        </section>
+
+        <section>
+            <h3>Ingresa los datos</h3>
+
+            <form id="calculadora">
+                <label for="costo">Costo del producto:</label>
+                <input type="number" id="costo" name="costo" min="0" step="0.01" required>
+
+                <label for="margen">Margen de ganancia deseado (%):</label>
+                <input type="number" id="margen" name="margen" min="0" max="99.9" step="0.1" required>
+
+                <button type="submit">Calcular precio</button>
+            </form>
+
+            <div id="error"></div>
+        </section>
+
+        <section id="resultado">
+            <h3>Resultado</h3>
+            <p>Precio de venta recomendado: <strong id="precio"></strong></p>
+            <p>Ganancia por unidad: <strong id="ganancia"></strong></p>
+            <p>Margen real: <strong id="margen-real"></strong></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>RENTABILI © 2026</p>
+    </footer>
+
+</body>
+</html>
